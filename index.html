@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8" />
+        <title>Snowball Debt Calculator</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- <link rel="stylesheet" href="css/bootstrap.-gridmin.css" /> -->
+        <!-- <link rel="stylesheet" href="css/bootstrap-reboot.min.css" /> -->
+        <!-- <link rel="stylesheet" href="css/datatables.min.css" /> -->
+        <link rel="stylesheet" href="css/ui.css" />
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <!-- <script src="js/bootstrap.min.js"></script> -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="js/datatables.min.js"></script> -->
+        <script src="js/loan.js"></script>
+        <script src="js/ui.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <h1>
+            Snowball Debt Calculator
+            <sub><span id="dateTag"></span></sub>
+        </h1>
+
+        <button id="dw" class="btn btn-sm btn-secondary">Doctor Who</button>
+        <span id="memory-slots-block" style="display: none;">
+            <select class="memory-slot-selector"></select>
+            <button class="btn btn-sm btn-secondary load-memory-slot">Load</button>
+            <button class="btn btn-sm btn-secondary set-memory-slot">Set</button> |
+        </span>
+		<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#loanModal"
+                data-whatever="@mdo">Loan Modal</button>
+        <select id="month-selector" class="month-selector"></select>
+        <select id="year-selector" class="year-selector"></select>
+        <button id="today" class="btn btn-sm btn-secondary">Today</button>
+
+        <table id="loans">
+            <tr class="header" />
+        </table>
+        <input type="checkbox" id="hide-columns" name="hide-columns" value="Bike">
+        <label for="hide-columns"> hide columns</label><br>
+		<div class="datagrid">
+            <table id="snowball">
+                <thead class="header" />
+                <tbody />
+            </table>
+        </div>
+
+        <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paymentModalLabel">Add Additional Payment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form name="payment" id="bob">
+                            <input type="hidden" class="form-control" name="idx" />
+                            <div class="form-group">
+			                    <label for="payment-month" class="col-form-label">Month:</label>
+			                    <select class="form-control month-selector" name="month"></select>
+                            </div>
+                            <div class="form-group">
+			                    <label for="payment-year" class="col-form-label">Year:</label>
+			                    <select class="form-control year-selector" name="year"></select>
+                            </div>
+                            <div class="form-group">
+			                    <label for="payment-amount" class="col-form-label">Amount:</label>
+			                    <input type="number" class="form-control" name="amount" value="100" step="0.01" />
+                            </div>
+		                </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary reset">Reset</button>
+                        <button type="button" class="btn btn-primary submit" data-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loanModal" tabindex="-1" role="dialog" aria-labelledby="loanModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loanModalLabel">Add New Loan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form name="loan" id="frank">
+                            <div class="form-group">
+			                    <label for="loan-principle" class="col-form-label">Principle:</label>
+			                    <input type="number" class="form-control" name="principle" value="10000" step="0.01" />
+                            </div>
+                            <div class="form-group">
+			                    <label for="loan-interest-rate" class="col-form-label">
+                                    Interest Rate:</label>
+			                    <input type="number" class="form-control" name="interest-rate"
+                                       value="6.8" step="0.01" />
+                            </div>
+                            <div class="form-group">
+			                    <label for="loan-monthly-payment" class="col-form-label">
+                                    Monthly Payment:</label>
+			                    <input type="number" class="form-control" name="monthly-payment"
+                                       value="100" step="0.01" />
+                            </div>
+		                </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close</button>
+                        <button type="button" class="btn btn-primary reset">
+                            Reset</button>
+                        <button type="button" class="btn btn-primary submit" data-dismiss="modal">
+                            Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
